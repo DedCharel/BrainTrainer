@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textViewScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1 / 1" />
+
+    <TextView
+        android:id="@+id/textViewTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="3:25" />
+
+    <TextView
+        android:id="@+id/textViewQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@id/textViewOpinion0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTimer"
+        tools:text="25 + 16" />
+
+    <TextView
+        android:id="@+id/textViewOpinion0"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_dark"
+        android:gravity="center"
+        android:padding="@dimen/padding_inside_textview"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_options"
+        app:layout_constraintBottom_toTopOf="@id/textViewOpinion2"
+        app:layout_constraintEnd_toStartOf="@id/textViewOpinion1"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="56" />
+
+    <TextView
+        android:id="@+id/textViewOpinion1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_green_light"
+        android:gravity="center"
+        android:padding="@dimen/padding_inside_textview"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_options"
+        app:layout_constraintBottom_toTopOf="@id/textViewOpinion3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textViewOpinion0"
+        tools:text="10" />
+
+    <TextView
+        android:id="@+id/textViewOpinion2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_light"
+        android:gravity="center"
+        android:padding="@dimen/padding_inside_textview"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_options"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textViewOpinion3"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="56" />
+
+    <TextView
+        android:id="@+id/textViewOpinion3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_purple"
+        android:gravity="center"
+        android:padding="@dimen/padding_inside_textview"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_options"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textViewOpinion2"
+        tools:text="10" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
