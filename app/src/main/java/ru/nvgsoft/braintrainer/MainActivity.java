@@ -2,8 +2,11 @@ package ru.nvgsoft.braintrainer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,6 +19,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String EXTRAS_RESULT = "result";
+    private static final String PREFERENCES_MAX = "max";
     private TextView textViewTimer;
     private TextView textViewScore;
     private TextView textViewQuestion;
@@ -43,15 +48,26 @@ public class MainActivity extends AppCompatActivity {
         initViews();
         playNext();
 
-        CountDownTimer timer = new CountDownTimer(6000,1000) {
+        CountDownTimer timer = new CountDownTimer(20000,1000) {
             @Override
-            public void onTick(long l) {
-                textViewTimer.setText(getTime(l));
+            public void onTick(long millisUntilFinished) {
+                textViewTimer.setText(getTime(millisUntilFinished));
+                if (millisUntilFinished < 10000) {
+                    textViewTimer.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                }
             }
 
             @Override
             public void onFinish() {
                 gameOver = true;
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                int max = preferences.getInt(PREFERENCES_MAX, 0);
+                if (countOfRightAnswer >= max) {
+                    preferences.edit().putInt(PREFERENCES_MAX, countOfRightAnswer).apply();
+                }
+                Intent intent = new Intent(MainActivity.this, ScoreActivity.class);
+                intent.putExtra(EXTRAS_RESULT, countOfRightAnswer);
+                startActivity(intent);
             }
         };
         timer.start();
